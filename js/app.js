@@ -39,5 +39,6 @@ myApp.config(['$routeProvider',
   }
 ]);
 myApp.run(function($rootScope) {
+  $rootScope.hospitals = "";
   $rootScope.show_extra_form = false;
 });

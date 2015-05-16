@@ -4,7 +4,7 @@
 
 var myAppServices = angular.module('myAppServices', []);
 
-myAppServices.service('Hospital', function($http){
+myAppServices.service('Hospital', function($http, $rootScope, $location, $route){
 	return {
 		get: function(name){
 			var data = {
@@ -13,14 +13,16 @@ myAppServices.service('Hospital', function($http){
       console.log(data);
 		  $http({
         url: "http://nhshackday.liquidbronze.com/site_find",
-        method: "GET",
+        method: "POST",
 				data: data,
 	      headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }
       }).success(function(data, status, headers, config){
-        console.log(data);
+        $rootScope.hospitals = data;
+        console.log($rootScope.hospitals);
+        $route.reload();
       }).error(function(){
       	return "Not Found";
       });

@@ -15,6 +15,7 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $l
   ];
 
   $scope.findHospital = function(formData){
+    $scope.hospitals = "No hospital found";
     if(formData){
       Hospital.get(formData.name);
     } else {
