@@ -25,6 +25,10 @@ myApp.config(['$routeProvider',
         templateUrl: 'partials/feedback/form.html',
         controller: 'FeedbackFormController'
       }).
+      when('/feedback/complete', {
+        templateUrl: 'partials/feedback/complete.html',
+        controller: 'FeedbackCompleteController'
+      }).
       when('/feedback/edit', {
         templateUrl: 'partials/feedback/edit.html',
         controller: 'FeedbackEditController'
@@ -34,3 +38,6 @@ myApp.config(['$routeProvider',
       });
   }
 ]);
+myApp.run(function($rootScope) {
+  $rootScope.show_extra_form = false;
+});

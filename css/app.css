@@ -39,3 +39,6 @@ ul.projects{
 .projects a:hover{
 	text-decoration: underline;
 }
+.display_inline_block{
+	display: inline-block;
+}

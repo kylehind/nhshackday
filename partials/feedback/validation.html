@@ -12,6 +12,7 @@
        [ng-required="discharge_date"]
        [ng-change="discharge_date"]>
       <md-autocomplete
+          ng-model="hospital_name"
           ng-disabled="ctrl.isDisabled"
           md-no-cache="ctrl.noCache"
           md-selected-item="ctrl.selectedItem"
@@ -43,7 +44,7 @@
 
       <md-input-container flex>
         <label>Postcode</label>
-        <input ng-model="formData.postcode">
+        <input ng-model="formData.partial_postcode">
       </md-input-container>
       <md-button type="submit" class="md-raised md-success">Proceed</md-button>    
     </form>

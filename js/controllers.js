@@ -75,6 +75,18 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $l
   };  
 });
 
+myAppControllers.controller('FeedbackFormController', function ($scope){
+  $scope.processForm = function(formData){
+    console.log(formData);
+    $location.path( "/feedback/form" ); 
+  };  
+});
+
+myAppControllers.controller('FeedbackCompleteController', function ($scope){
+  // var num = Math.floor((Math.random()*6)+1);
+  // $scope.reference = num + "patient_procedure"
+});
+
 myAppControllers.controller('FeedbackEditController', function ($scope){
 
 });
