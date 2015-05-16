@@ -8,83 +8,70 @@ myAppControllers.controller('FeedbackIndexController', function ($scope){
 
 });
 
-myAppControllers.controller('FeedbackValidationController', function ($scope, $location, Hospital){
+myAppControllers.controller('FeedbackValidationController', function ($scope, $location, Hospital, Validation){
   $scope.gender_options = [
     {text: "Male", value: 0},
     {text: "Female", value: 1},
-  ]
-  var self = this;
-  self.simulateQuery = false;
-  self.isDisabled    = false;
-  // list of `state` value/display objects
-  self.states        = loadAll();
-  self.querySearch   = querySearch;
-  self.selectedItemChange = selectedItemChange;
-  self.searchTextChange   = searchTextChange;
-  // ******************************
-  // Internal methods
-  // ******************************
-  /**
-   * Search for states... use $timeout to simulate
-   * remote dataservice call.
-   */
-  function querySearch (query) {
-    var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
-        deferred;
-    if (self.simulateQuery) {
-      deferred = $q.defer();
-      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-      return deferred.promise;
+  ];
+
+  $scope.findHospital = function(formData){
+    if(formData){
+      Hospital.get(formData.name);
     } else {
-      return results;
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.body))
+          .title('Name Empty')
+          .content('Please enter a hospital name to search.')
+          .ariaLabel('Alert Dialog Demo')
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
     }
-  }
-  function searchTextChange(text) {
-    $log.info('Text changed to ' + text);
-  }
-  function selectedItemChange(item) {
-    $log.info('Item changed to ' + JSON.stringify(item));
-  }
-  /**
-   * Build `states` list of key/value pairs
-   */
-  function loadAll() {
-  	// var hospitals = Hospital.get();
-   //  console.log(hospitals);
-   
-   //  return hospitals.map( function (state) {
-   //    return {
-   //      value: state.toLowerCase(),
-   //      display: state
-   //    };
-   //  });
-  }
-  /**
-   * Create filter function for a query string
-   */
-  function createFilterFor(query) {
-    var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(state) {
-      return (state.value.indexOf(lowercaseQuery) === 0);
-    };
-  }
+    // then set a hidden field with id 
+  };
 
   $scope.processForm = function(formData){
-    console.log(formData);
-    $location.path( "/feedback/form" ); 
+    if(formData){
+      Validation.set(formData);
+      $location.path( "/feedback/form" ); 
+    } else {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.body))
+          .title('Form Empty')
+          .content('Please enter details to send.')
+          .ariaLabel('Alert Dialog Demo')
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
+    }   
   };  
 });
 
-myAppControllers.controller('FeedbackFormController', function ($scope){
+myAppControllers.controller('FeedbackFormController', function ($scope, $location, Form){
   $scope.processForm = function(formData){
-    console.log(formData);
-    $location.path( "/feedback/form" ); 
+    if(formData){
+      formData.reference = ("patient_ref" + (Math.random()*10000000)).replace(".","")
+      Form.set(formData);
+      $location.path( "/feedback/complete" ); 
+    } else {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.body))
+          .title('Form Empty')
+          .content('Please enter details to send.')
+          .ariaLabel('Alert Dialog Demo')
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
+    }  
   };  
 });
 
-myAppControllers.controller('FeedbackCompleteController', function ($scope){
-  // var num = Math.floor((Math.random()*6)+1);
-  // $scope.reference = num + "patient_procedure"
+myAppControllers.controller('FeedbackCompleteController', function ($scope, Feedback){
+  Feedback.send();
+  $scope.reference = localStorage.reference;
 });
 
 myAppControllers.controller('FeedbackEditController', function ($scope){

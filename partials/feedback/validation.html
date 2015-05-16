@@ -1,36 +1,25 @@
 <div ng-controller="FeedbackValidationController as ctrl" layout="column">
   <h3> Please enter your procedure details </h3>
   <md-content layout-padding layout="column">
+    <form ng-submit="findHospital(formData)" ng-model="formData">
+      <md-input-container flex>
+        <label>Name of Hospital</label>
+        <input ng-model="formData.name">
+      </md-input-container>
+      <md-button type="submit" class="md-raised md-success">Find</md-button>    
+    </form>
     <form ng-submit="processForm(formData)" ng-model="formData">
       <label>Date of discharge</label>
 		  <input type="date"
-       ng-model="formData.discharge_date"
-       [name="discharge_date"]
-       [min="discharge_date"]
-       [max="discharge_date"]
-       [required="discharge_date"]
-       [ng-required="discharge_date"]
-       [ng-change="discharge_date"]>
-      <md-autocomplete
-          ng-model="hospital_name"
-          ng-disabled="ctrl.isDisabled"
-          md-no-cache="ctrl.noCache"
-          md-selected-item="ctrl.selectedItem"
-          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-          md-search-text="ctrl.searchText"
-          md-selected-item-change="ctrl.selectedItemChange(item)"
-          md-items="item in ctrl.querySearch(ctrl.searchText)"
-          md-item-text="item.display"
-          md-min-length="0"
-          placeholder="Which hospital where you discharged from?">
-        <md-item-template>
-          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
-        </md-item-template>
-        <md-not-found>
-          No matches found for "{{ctrl.searchText}}".
-        </md-not-found>
-      </md-autocomplete>
-
+        ng-model="formData.discharge_date"
+        [name="discharge_date"]
+        [min="discharge_date"]
+        [max="discharge_date"]
+        [required="discharge_date"]
+        [ng-required="discharge_date"]
+        [ng-change="discharge_date"]
+        [placeholder="Select a Date"]
+      >         
       <md-input-container flex>
         <label>Age at discharge</label>
         <input ng-model="formData.age">
