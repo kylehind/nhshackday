@@ -36,6 +36,7 @@ h2{
 }
 /* POSITIONING */
 .absolute_center_parent{
+	background: #0066CC !important;
   position: relative;
   height:100vh;
 }

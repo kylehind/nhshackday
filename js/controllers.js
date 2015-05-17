@@ -24,13 +24,11 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $l
       Hospital.get(formData.name);
     } else {
       $mdDialog.show(
-        $mdDialog.alert()
-          .parent(angular.element(document.body))
+        $mdDialog.alert()          
           .title('Name Empty')
           .content('Please enter a hospital name to search.')
           .ariaLabel('Alert Dialog Demo')
-          .ok('Got it!')
-          .targetEvent(ev)
+          .ok('Got it!')          
       );
     }
     // then set a hidden field with id 
@@ -42,13 +40,11 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $l
       $location.path( "/feedback/form" ); 
     } else {
       $mdDialog.show(
-        $mdDialog.alert()
-          .parent(angular.element(document.body))
+        $mdDialog.alert()          
           .title('Form Empty')
           .content('Please enter details to send.')
           .ariaLabel('Alert Dialog Demo')
-          .ok('Got it!')
-          .targetEvent(ev)
+          .ok('Got it!')          
       );
     }   
   };  
@@ -62,13 +58,11 @@ myAppControllers.controller('FeedbackFormController', function ($scope, $mdDialo
       $location.path( "/feedback/complete" ); 
     } else {
       $mdDialog.show(
-        $mdDialog.alert()
-          .parent(angular.element(document.body))
+        $mdDialog.alert()          
           .title('Form Empty')
           .content('Please enter details to send.')
           .ariaLabel('Alert Dialog Demo')
-          .ok('Got it!')
-          .targetEvent(ev)
+          .ok('Got it!')          
       );
     }  
   };  
