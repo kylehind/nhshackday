@@ -10,7 +10,7 @@
   <form ng-submit="processForm(formData)" ng-model="formData">
     <md-radio-group ng-model="formData.pgic">
       <div ng-repeat="hospital in hospitals">
-        <md-radio-button value="{{hospital[0]}}">{{hospital[1] + ", " + hospital[2] + ", " + hospital[3]}}</md-radio-button>
+        <md-radio-button ng-click="hideRadios({{hospital[0]}})" value="{{hospital[0]}}">{{hospital[1] + ", " + hospital[2] + ", " + hospital[3]}}</md-radio-button>
       </div>
     </md-radio-group>
     <label>Date of discharge</label>
