@@ -18,7 +18,8 @@
 		    <div flex="10" layout layout-align="center center">
 	        <label>How would you rate your degree of change since beginning care at this clinic?<label>
 	      </div>
-	      <md-slider class="md-primary "  flex md-discrete ng-model="formData.vas" step="1" min="1" max="5" aria-label="rating"></md-slider>
+	       <md-slider class="md-primary" aria-label="rating" step="1" md-discrete min="-5" max="5" ng-model="0"></md-slider>
+
 	      <md-button class="center_button grey_backgroud" ng-click="show_extra_form = true">Click here if you would like to provide with extra details</md-button>
 	      <div ng-show="show_extra_form">
 	      	<md-button class="center_button grey_backgroud" ng-click="show_doctor_form = true">For your Consultant</md-button>
