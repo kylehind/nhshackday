@@ -18,12 +18,10 @@
 		    <div flex="10" layout layout-align="center center">
 	        <label>How would you rate your degree of change since beginning care at this clinic?<label>
 	      </div>
-	      <md-slider class="md-primary "  flex md-discrete ng-model="formData.vas" step="1" min="1" max="5" aria-label="rating"></md-slider>
-	      <md-button class="center_button grey_backgroud" ng-click="show_extra_form = true">Click here if you would like to provide with extra details</md-button>
-	      <div ng-show="show_extra_form">
-	      	<md-button class="center_button grey_backgroud" ng-click="show_doctor_form = true">For your Consultant</md-button>
-	      	<div ng-show="show_doctor_form">
-		      	<label><p class="text_align_center">How would you rate your consultant?</p></label>
+	      <md-slider class="md-primary" flex md-discrete ng-model="formData.vas" step="1" min="-5" max="5" aria-label="rating" tabindex="0" role="slider" aria-valuemin="-5" aria-valuenow="0" aria-valuemax="5" aria-invalid="false" ng-model="0"></md-slider>
+
+	      <br/>
+		      	<label><p class="text_align_center"><b>How would you rate your consultant?</b></p></label>
 			    	<md-radio-group ng-model="formData.doctor_rating">
 			    		<div class="width_425">
 					      <md-radio-button  class="md-primary display_inline_block" value="1" class="display_inline_block"><div class="star_1">1</div></md-radio-button>
@@ -42,7 +40,11 @@
 			        <label>What could your consultant do better?</label>
 			        <textarea ng-model="formData.doctor_bad" columns="1" md-maxlength="150"></textarea>
 			      </md-input-container>
-			    </div>
+
+	      <md-button class="center_button grey_backgroud" ng-click="show_extra_form = true">Click here if you would like to provide with extra details</md-button>
+	      <br/><br/>
+
+			<div ng-show="show_extra_form">
 
 			    <br>
 			    <md-button class="center_button grey_backgroud" ng-click="show_nurses_form = true">For your Nurses</md-button>
