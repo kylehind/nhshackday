@@ -1,9 +1,9 @@
-<div class="absolute_center_parent">
+<div id="top_of_page" class="absolute_center_parent">
   <div class="absolute_center_child">
   	<h3 class="text_align_center white_text"> Please enter your procedure details </h3>
 	  <md-content layout-padding layout="column"  class="main_container">
 	  	<md-button class="md-raised center_button margin_bottom_10" ng-href="#/feedback/validation">Go Back</md-button>
-		  <form ng-submit="processForm(formData)" ng-model="formData">
+		  <form ng-submit="processForm(formData)" ng-model="formData" class="margin_top_20">
 				<label>Since beginning treatment at this clinic, how would you describe the change (if any) in <b>activity limitations, symtoms, emotions, and overall quality of life</b> related to your condition?</label>
 		    <md-radio-group ng-model="formData.pgic">
 		      <md-radio-button class="md-primary" value="1">No change (or condition has gotten worse)</md-radio-button>
@@ -98,4 +98,9 @@
 		  </form>
 		</md-content>
 	</div>
+</div>
+
+<div id="form_dialog" class="hide for_form">
+  <p class="no_margin text_align_center"><b>Submitting feedback...</b></p>
+  <md-progress-circular md-mode="indeterminate" class="align_center"></md-progress-circular>
 </div>

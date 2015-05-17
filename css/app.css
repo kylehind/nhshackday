@@ -36,8 +36,13 @@ h2{
 	right:0;
 	margin:0 auto;
 	width:30%;
-	height:280px;
 	z-index: 15;
+}
+.for_validation{
+	height:245px;
+}
+.for_form{
+	height:140px;
 }
 .no_top_margin{
 	margin-top:0;
@@ -86,6 +91,10 @@ h2{
 .margin_top_20{
 	margin-top:20px !important;
 }
+.margin_top_10{
+	margin-top:10px !important;
+}
+
 .white_text{
 	color: #ffffff;
 }

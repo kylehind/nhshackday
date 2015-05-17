@@ -52,7 +52,7 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $t
     if(formData){
       Validation.set(formData);
       $("#validation_dialog").removeClass("hide");
-      $("#validation_dialog").addClass("show_dialog"); 
+      $("#validation_dialog").addClass("show_dialog");      
       $timeout(function(){
         $location.path("/feedback/form"); 
       }, 5000);
@@ -68,7 +68,7 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $t
   };  
 });
 
-myAppControllers.controller('FeedbackFormController', function ($scope, $mdDialog, $location, Form){
+myAppControllers.controller('FeedbackFormController', function ($scope, $timeout,  $anchorScroll, $mdDialog, $location, Form){
   $scope.changeImage = function(){
     console.log("in change image");
     var value = $(".md-thumb-container")[0].style.cssText.replace("left: ","").replace("%;","");
@@ -90,9 +90,16 @@ myAppControllers.controller('FeedbackFormController', function ($scope, $mdDialo
   };
   $scope.processForm = function(formData){
     if(formData){
+      $location.hash('top_of_page');
+      // call $anchorScroll()
+      $anchorScroll();
       formData.reference = ("patient_ref" + (Math.random()*10000000)).replace(".","")
       Form.set(formData);
-      $location.path( "/feedback/complete" ); 
+      $("#form_dialog").removeClass("hide");
+      $("#form_dialog").addClass("show_dialog");      
+      $timeout(function(){
+        $location.path( "/feedback/complete" ); 
+      }, 2000);      
     } else {
       $mdDialog.show(
         $mdDialog.alert()          
@@ -105,9 +112,15 @@ myAppControllers.controller('FeedbackFormController', function ($scope, $mdDialo
   };  
 });
 
-myAppControllers.controller('FeedbackCompleteController', function ($scope, $location, Feedback){
+myAppControllers.controller('FeedbackCompleteController', function ($scope, $timeout,  $anchorScroll, $location, Feedback){
+  $location.hash('top_of_page');
+  // call $anchorScroll()
+  $anchorScroll();
   Feedback.send();
   $scope.reference = localStorage.reference;
+  $timeout(function(){
+    $location.path( "http://nhshackday.liquidbronze.com/patient_responses" ); 
+  }, 5000);      
   $scope.gotoIndex = function(){
     $location.path( "/feedback/index" );
   };

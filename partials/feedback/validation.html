@@ -11,7 +11,7 @@
         <md-button type="submit" class="md-raised md-primary pull_left vertical_align_top margin_top_20">Find</md-button>    
       </form>
       <form ng-submit="processForm(formData)" ng-model="formData">
-        <md-radio-group ng-model="formData.hospital_id" ng-hide="{{_.isEmpty(hospitals)}}">
+        <md-radio-group required ng-model="formData.hospital_id" ng-hide="{{_.isEmpty(hospitals)}}">
           <div ng-repeat="hospital in hospitals track by $index">
             <div ng-click="hideRadios(hospital[0])">
               <md-radio-button class="md-primary hospital" value="{{hospital[0]}}">{{hospital[1] + ", " + hospital[2] + ", " + hospital[3]}}</md-radio-button>
@@ -19,7 +19,7 @@
           </div>
         </md-radio-group>
         <label>Date of discharge</label>
-    	  <input type="date"
+    	  <input required type="date"
           class="date_picker"
           ng-model="formData.discharge_date"
           [name="discharge_date"]
@@ -32,11 +32,11 @@
         >         
         <md-input-container flex class="no_padding">
           <label>Age at discharge</label>
-          <input ng-model="formData.age">
+          <input required ng-model="formData.age">
         </md-input-container>
 
 
-        <md-radio-group ng-model="formData.gender">
+        <md-radio-group required ng-model="formData.gender">
           <label>Gender</label>
           <md-radio-button class="md-primary display_inline_block" value="1">Male</md-radio-button>
           <md-radio-button class="md-primary display_inline_block" value="2">Female</md-radio-button>
@@ -47,7 +47,7 @@
           <p>
             We will only use a partial postcode. <span ng-show="partial_postcode.length > 3"> (The postcode we will use: {{partial_postcode}})</span>
           </p>
-          <input ng-change="stripPostcode(formData.partial_postcode)" ng-model="formData.partial_postcode">
+          <input required ng-change="stripPostcode(formData.partial_postcode)" ng-model="formData.partial_postcode">
         </md-input-container>
         <md-button class="md-raised md-primary center_button" type="submit" class="md-raised md-success">Proceed</md-button>
       </form>
@@ -55,11 +55,11 @@
   </div> 
 </div>
 
-<div id="validation_dialog" class="hide">
-  <p class="text_align_center no_margin">Validating against HES data...</p>
-  <p class="text_align_center no_margin">Checking against:</p>
+<div id="validation_dialog" class="hide for_validation"> 
   <ul>
-    <li>Age (DISAGE)</li>
+    <li><b>Validating against HES data...</b></li>
+    <li><b>Checking against:</b></li>
+    <li class="margin_top_10">Age (DISAGE)</li>
     <li>Gender (SEX)</li>
     <li>Partial Postcode (POSTDIST)</li>
     <li>Site (SITETRET)</li>
