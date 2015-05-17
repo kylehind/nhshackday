@@ -8,7 +8,7 @@ myAppControllers.controller('FeedbackIndexController', function ($scope){
 
 });
 
-myAppControllers.controller('FeedbackValidationController', function ($scope, $rootScope, $location, $mdDialog, Hospital, Validation){
+myAppControllers.controller('FeedbackValidationController', function ($scope, $timeout, $rootScope, $location, $mdDialog, Hospital, Validation){
   $scope.gender_options = [
     {text: "Male", value: 1},
     {text: "Female", value: 2},
@@ -49,10 +49,13 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $r
   };
 
   $scope.processForm = function(formData){
-    console.log(formData);
     if(formData){
       Validation.set(formData);
-      $location.path( "/feedback/form" ); 
+      $("#validation_dialog").removeClass("hide");
+      $("#validation_dialog").addClass("show_dialog"); 
+      $timeout(function(){
+        $location.path("/feedback/form"); 
+      }, 5000);
     } else {
       $mdDialog.show(
         $mdDialog.alert()          
