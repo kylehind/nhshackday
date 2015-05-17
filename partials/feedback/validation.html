@@ -35,11 +35,12 @@
           <input required ng-model="formData.age">
         </md-input-container>
 
-        <md-select placeholder="Gender" ng-model="formData.gender">
-          <span ng-repeat="option in gender_options">
-            <md-option value="{{option.value}}">{{option.text}}</md-option>
-          </span>
-        </md-select>
+
+        <md-radio-group required ng-model="formData.gender">
+          <label>Gender</label>
+          <md-radio-button class="md-primary display_inline_block" value="1">Male</md-radio-button>
+          <md-radio-button class="md-primary display_inline_block" value="2">Female</md-radio-button>
+        </md-radio-group>
 
         <md-input-container flex>
           <label>Your Postcode</label>
