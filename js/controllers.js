@@ -10,8 +10,8 @@ myAppControllers.controller('FeedbackIndexController', function ($scope){
 
 myAppControllers.controller('FeedbackValidationController', function ($scope, $rootScope, $location, $mdDialog, Hospital, Validation){
   $scope.gender_options = [
-    {text: "Male", value: 0},
-    {text: "Female", value: 1},
+    {text: "Male", value: 1},
+    {text: "Female", value: 2},
   ];
   $scope.stripPostcode = function(postcode){
     console.log(postcode);
