@@ -8,7 +8,7 @@ myAppControllers.controller('FeedbackIndexController', function ($scope){
 
 });
 
-myAppControllers.controller('FeedbackValidationController', function ($scope, $location, Hospital, Validation){
+myAppControllers.controller('FeedbackValidationController', function ($scope, $location, $mdDialog, Hospital, Validation){
   $scope.gender_options = [
     {text: "Male", value: 0},
     {text: "Female", value: 1},
@@ -54,7 +54,7 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $l
   };  
 });
 
-myAppControllers.controller('FeedbackFormController', function ($scope, $location, Form){
+myAppControllers.controller('FeedbackFormController', function ($scope, $mdDialog, $location, Form){
   $scope.processForm = function(formData){
     if(formData){
       formData.reference = ("patient_ref" + (Math.random()*10000000)).replace(".","")
