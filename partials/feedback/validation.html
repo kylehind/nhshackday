@@ -11,7 +11,7 @@
         <md-button type="submit" class="md-raised md-primary pull_left vertical_align_top margin_top_20">Find</md-button>    
       </form>
       <form ng-submit="processForm(formData)" ng-model="formData">
-        <md-radio-group required ng-model="formData.hospital_id" ng-hide="_isEmpty(hospitals)">
+        <md-radio-group required ng-model="formData.hospital_id" ng-hide="{{_.isEmpty(hospitals)}}">
           <div ng-repeat="hospital in hospitals track by $index">
             <div ng-click="hideRadios(hospital[0])">
               <md-radio-button class="md-primary hospital" value="{{hospital[0]}}">{{hospital[1] + ", " + hospital[2] + ", " + hospital[3]}}</md-radio-button>

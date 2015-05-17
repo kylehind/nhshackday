@@ -66,6 +66,25 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $r
 });
 
 myAppControllers.controller('FeedbackFormController', function ($scope, $mdDialog, $location, Form){
+  $scope.changeImage = function(){
+    console.log("in change image");
+    var value = $(".md-thumb-container")[0].style.cssText.replace("left: ","").replace("%;","");
+    if(value >= 75 && value <= 100){
+      console.log("happy");
+      $(".md-thumb").html("<img class='face' src='img/1_laugh.png'>");
+    } else if (value >= 55 && value <= 75){
+      $(".md-thumb").html("<img class='face' src='img/2_smile.png'>");
+    } else if (value >= 35 && value <= 54){
+      $(".md-thumb").html("<img class='face' src='img/3_neutral.png'>");
+    } else if (value >= 26 && value <= 34){
+      $(".md-thumb").html("<img class='face' src='img/4_sad.png'>");
+    } else if (value >= 0 && value <= 25){
+      $(".md-thumb").html("<img class='face' src='img/5_crying_20.png'>");
+    }
+  };
+  $scope.hideImage = function(){
+    $('.face').hide();
+  };
   $scope.processForm = function(formData){
     if(formData){
       formData.reference = ("patient_ref" + (Math.random()*10000000)).replace(".","")

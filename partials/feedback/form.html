@@ -18,7 +18,7 @@
 		    <div flex="10" layout layout-align="center center">
 	        <label>How would you rate your degree of change since beginning care at this clinic?<label>
 	      </div>
-	      <md-slider class="md-primary width_80 align_center" flex md-discrete ng-model="formData.vas" step="1" min="-5" max="5" aria-label="rating" tabindex="0" role="slider" aria-valuemin="-5" aria-valuenow="0" aria-valuemax="5" aria-invalid="false" ng-model="0"></md-slider>
+	      <md-slider ng-blur="hideImage()" ng-change="changeImage()" ng-focus="changeImage()" class="md-primary width_80 align_center" flex md-discrete ng-model="formData.vas" step="1" min="-5" max="5" aria-label="rating" tabindex="0" role="slider" aria-valuemin="-5" aria-valuenow="0" aria-valuemax="5" aria-invalid="false" ng-model="0"></md-slider>
 
 		    <div class="rule"></div>
 
