@@ -4,17 +4,17 @@
     <md-content layout-padding layout="column" class="main_container">
       <md-button class="md-raised center_button margin_bottom_10" ng-href="#/feedback/index">Go Back</md-button>
       <form ng-submit="findHospital(formData)" ng-model="formData">
-        <md-input-container flex class="width_80 pull_left">
+        <md-input-container flex class="width_80 pull_left no_padding margin_bottom_10">
           <label>Name of Hospital</label>
           <input required ng-model="formData.name" class="width_100 date_picker">
         </md-input-container>
         <md-button type="submit" class="md-raised md-primary pull_left vertical_align_top margin_top_20">Find</md-button>    
       </form>
       <form ng-submit="processForm(formData)" ng-model="formData">
-        <md-radio-group required ng-model="formData.hospital_id">
+        <md-radio-group required ng-model="formData.hospital_id" ng-hide="_isEmpty(hospitals)">
           <div ng-repeat="hospital in hospitals track by $index">
             <div ng-click="hideRadios(hospital[0])">
-              <md-radio-button class="md-primary" value="{{hospital[0]}}">{{hospital[1] + ", " + hospital[2] + ", " + hospital[3]}}</md-radio-button>
+              <md-radio-button class="md-primary hospital" value="{{hospital[0]}}">{{hospital[1] + ", " + hospital[2] + ", " + hospital[3]}}</md-radio-button>
             </div>
           </div>
         </md-radio-group>

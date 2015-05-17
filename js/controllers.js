@@ -29,7 +29,7 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $r
   };
 
   $scope.hideRadios = function(hospital_id){
-    console.log(hospital_id);
+    var hospital_fields = $(".hospital[aria-checked=false]").hide();   
   };
 
   $scope.findHospital = function(formData){
