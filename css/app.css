@@ -19,6 +19,12 @@ h2{
 	size: 50px;
 	margin:15px;
 }
+.no_top_margin{
+	margin-top:0;
+}
+.padding_20{
+	padding:20px;
+}
 .header{
 	margin:0;
 	padding:10px;

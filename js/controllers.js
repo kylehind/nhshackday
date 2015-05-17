@@ -74,9 +74,12 @@ myAppControllers.controller('FeedbackFormController', function ($scope, $mdDialo
   };  
 });
 
-myAppControllers.controller('FeedbackCompleteController', function ($scope, Feedback){
+myAppControllers.controller('FeedbackCompleteController', function ($scope, $location, Feedback){
   Feedback.send();
   $scope.reference = localStorage.reference;
+  $scope.gotoIndex = function(){
+    $location.path( "/feedback/index" );
+  };
 });
 
 myAppControllers.controller('FeedbackEditController', function ($scope){
