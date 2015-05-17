@@ -14,12 +14,17 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $r
     {text: "Female", value: 1},
   ];
   $scope.stripPostcode = function(postcode){
-    if(postcode.length > 3){
-      var reg = /[a-zA-Z]{1,2}\d{1,2}\s?\d{1}(.*)/;
-      var new_pc = postcode.replace(postcode.match(reg)[1], "");
-      $rootScope.partial_postcode = new_pc;
-    }else{
-      $rootScope.partial_postcode = postcode;
+    console.log(postcode);
+    if(_.isUndefined(postcode)){
+      $rootScope.partial_postcode = "";
+    } else {
+      if(postcode.length > 3){
+        var reg = /[a-zA-Z]{1,2}\d{1,2}\s?\d{1}(.*)/;
+        var new_pc = postcode.replace(postcode.match(reg)[1], "");
+        $rootScope.partial_postcode = new_pc;
+      }else{
+        $rootScope.partial_postcode = "";
+      }
     }
   };
 
@@ -44,6 +49,7 @@ myAppControllers.controller('FeedbackValidationController', function ($scope, $r
   };
 
   $scope.processForm = function(formData){
+    console.log(formData);
     if(formData){
       Validation.set(formData);
       $location.path( "/feedback/form" ); 
